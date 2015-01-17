@@ -38,4 +38,4 @@ hs.hotkey.bind({"alt", "shift"}, "8", function() ny.spaces.moveToSpace("8") end)
 hs.hotkey.bind({"alt", "shift"}, "9", function() ny.spaces.moveToSpace("9") end)
 hs.hotkey.bind({"alt", "shift"}, "0", function() ny.spaces.moveToSpace("0") end)
 
-hs.alert("[config] reloaded", 0.5)
+hs.alert("[config] loaded", 0.5)
