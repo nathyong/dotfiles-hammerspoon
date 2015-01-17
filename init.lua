@@ -1,4 +1,5 @@
-local ny = {window = require "ny.window"}
+local ny = {spaces = require "ny.spaces",
+            window = require "ny.window"}
 
 hs.window.animationDuration = 0
 ny.window.persistentapps = {Hammerspoon = true, Transmission = true}
@@ -24,5 +25,17 @@ applaunch:bind({"alt"}, "w", function()
     hs.application.launchOrFocus("Firefox") applaunch:exit() end)
 applaunch:bind({"alt"}, "m", function()
     hs.application.launchOrFocus("Thunderbird") applaunch:exit() end)
+
+ny.spaces.modifiers = {alt = true}
+hs.hotkey.bind({"alt", "shift"}, "1", function() ny.spaces.moveToSpace("1") end)
+hs.hotkey.bind({"alt", "shift"}, "2", function() ny.spaces.moveToSpace("2") end)
+hs.hotkey.bind({"alt", "shift"}, "3", function() ny.spaces.moveToSpace("3") end)
+hs.hotkey.bind({"alt", "shift"}, "4", function() ny.spaces.moveToSpace("4") end)
+hs.hotkey.bind({"alt", "shift"}, "5", function() ny.spaces.moveToSpace("5") end)
+hs.hotkey.bind({"alt", "shift"}, "6", function() ny.spaces.moveToSpace("6") end)
+hs.hotkey.bind({"alt", "shift"}, "7", function() ny.spaces.moveToSpace("7") end)
+hs.hotkey.bind({"alt", "shift"}, "8", function() ny.spaces.moveToSpace("8") end)
+hs.hotkey.bind({"alt", "shift"}, "9", function() ny.spaces.moveToSpace("9") end)
+hs.hotkey.bind({"alt", "shift"}, "0", function() ny.spaces.moveToSpace("0") end)
 
 hs.alert("[config] reloaded", 0.5)
