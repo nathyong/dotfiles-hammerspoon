@@ -26,6 +26,22 @@ applaunch:bind({"alt"}, "w", function()
 applaunch:bind({"alt"}, "m", function()
     hs.application.launchOrFocus("Thunderbird") applaunch:exit() end)
 
+-- Toggle console visibility
+function toggle_console()
+  local console = hs.appfinder.windowFromWindowTitle("Hammerspoon Console")
+  if console and (console ~= hs.window.focusedWindow()) then
+    console:focus()
+  elseif console then
+    console:close()
+  else
+    hs.openConsole()
+  end
+end
+
+hs.hotkey.bind({"alt", "shift"}, "A", function()
+    toggle_console()
+end)
+
 ny.spaces.modifiers = {alt = true}
 hs.hotkey.bind({"alt", "shift"}, "1", function() ny.spaces.moveToSpace("1") end)
 hs.hotkey.bind({"alt", "shift"}, "2", function() ny.spaces.moveToSpace("2") end)
