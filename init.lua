@@ -38,4 +38,18 @@ hs.hotkey.bind({"alt", "shift"}, "8", function() ny.spaces.moveToSpace("8") end)
 hs.hotkey.bind({"alt", "shift"}, "9", function() ny.spaces.moveToSpace("9") end)
 hs.hotkey.bind({"alt", "shift"}, "0", function() ny.spaces.moveToSpace("0") end)
 
+hs.hotkey.bind({"alt"}, "Return", function()
+    local itermApp = hs.appfinder.appFromName("iTerm")
+    if itermApp == nil then
+      hs.application.launchOrFocus("iTerm")
+    else
+      hs.applescript.applescript(
+        [[tell application "iTerm"
+          set myterm to (make new terminal)
+          tell myterm to launch session "Default"
+          activate
+          end tell]])
+    end
+end)
+
 hs.alert("[config] loaded", 0.5)
