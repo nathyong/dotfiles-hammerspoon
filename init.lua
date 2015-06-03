@@ -20,7 +20,7 @@ applaunch:bind({}, "escape", function() applaunch:exit() end)
 applaunch:bind({"alt"}, "s", function()
     hs.application.launchOrFocus("Skype") applaunch:exit() end)
 applaunch:bind({"alt"}, "t", function()
-    hs.application.launchOrFocus("Terminal") applaunch:exit() end)
+    hs.application.launchOrFocus("iTerm") applaunch:exit() end)
 applaunch:bind({"alt"}, "w", function()
     hs.application.launchOrFocus("Firefox") applaunch:exit() end)
 applaunch:bind({"alt"}, "m", function()
@@ -59,14 +59,15 @@ hs.hotkey.bind({"alt", "shift"}, "0", function() ny.spaces.moveToSpace("0") end)
 
 -- something nice to bring up terminal windows
 hs.hotkey.bind({"alt", "shift"}, "Return", function()
-    local itermApp = hs.appfinder.appFromName("Terminal")
+    local itermApp = hs.appfinder.appFromName("iTerm")
     if itermApp == nil then
-      hs.application.launchOrFocus("Terminal")
+      hs.application.launchOrFocus("iTerm")
     else
       hs.applescript.applescript(
-        [[tell application "Terminal"
-            do script " "
-            activate
+        [[tell application "iTerm"
+          set myterm to (make new terminal)
+          tell myterm to launch session "Default"
+          activate
           end tell]])
     end
 end)
