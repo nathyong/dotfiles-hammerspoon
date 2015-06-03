@@ -25,6 +25,8 @@ applaunch:bind({"alt"}, "w", function()
     hs.application.launchOrFocus("Firefox") applaunch:exit() end)
 applaunch:bind({"alt"}, "m", function()
     hs.application.launchOrFocus("Thunderbird") applaunch:exit() end)
+applaunch:bind({"alt"}, "k", function()
+    hs.application.launchOrFocus("KakaoTalk") applaunch:exit() end)
 
 -- toggle console visibility
 function toggle_console()
