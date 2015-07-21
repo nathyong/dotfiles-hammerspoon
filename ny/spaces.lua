@@ -21,13 +21,12 @@ function spaces.moveToSpace(key)
     local frame = win:frame()
     local position = {x=frame.x + 65, y=frame.y + 7}
     hs.mouse.set(position)
-    os.execute("sleep 0.1")
-    event.newMouseEvent(event.types.leftmousedown, position):post()
+    event.newMouseEvent(event.types.leftMouseDown, position):post()
     newKeyEvent(spaces.modifiers, key, true):post()
-    event.newMouseEvent(event.types.leftmousedragged, position):post()
+    event.newMouseEvent(event.types.leftMouseDragged, position):post()
     newKeyEvent(spaces.modifiers, key, false):post()
-    event.newMouseEvent(event.types.leftmouseup, position):post()
-    os.execute("sleep 0.1")
+    os.execute("sleep 0.3")
+    event.newMouseEvent(event.types.leftMouseUp, position):post()
     hs.mouse.set(position0)
   end
 end
