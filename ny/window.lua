@@ -16,4 +16,25 @@ function window.closeOrQuit(win)
   end
 end
 
+--[[ is this window worth of being displayed?
+params : window (type hs.window)
+returns : bool ]]
+function window.hintableWindow(window)
+  return (window:title() ~= "") and (window:application():title() ~= "") and (window:isStandard())
+end
+
+--[[ get a list of visible windows that match our
+display criteria
+returns : list of window objects ]]
+function window.hintableWindows()
+  windows = hs.window.orderedWindows()
+  return hs.fnutils.filter(windows, hintableWindow)
+end
+
+function window.focusInterestingWindow()
+  if next(window.hintableWindows()) ~= nil then
+    window.hintableWindows()[1]:focus()
+  end
+end
+
 return window

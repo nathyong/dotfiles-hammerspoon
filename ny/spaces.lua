@@ -1,8 +1,16 @@
 local spaces = {}
 
 local event = hs.eventtap.event
+local window = require "ny.window"
+local asmspc = require "../hs._asm.undocumented.spaces"
 
 spaces.modifiers = {ctrl = true}
+
+function spaces.moveToSpace(key)
+  asmspc.moveToSpace(key)
+  os.execute("sleep 0.01")
+  window.focusInterestingWindow()
+end
 
 --- spaces.moveToSpace(key)
 --- Function
@@ -11,24 +19,23 @@ spaces.modifiers = {ctrl = true}
 ---
 --- Move to a particular space by simulating the key events needed to move to
 --- that space, bringing a window along with it if there is one.
-function spaces.moveToSpace(key)
+function spaces.moveWindowToSpace(key)
+  lastspace = asmspc.currentSpace()
   local win = hs.window.focusedWindow()
   if win == nil then
-    newKeyEvent(spaces.modifiers, key, true):post()
-    newKeyEvent(spaces.modifiers, key, false):post()
+    asmspc.moveToSpace(key)
   else
-    local position0 = hs.mouse.get()
+    local position0 = hs.mouse.getAbsolutePosition()
     local frame = win:frame()
     local position = {x=frame.x + 65, y=frame.y + 7}
-    hs.mouse.set(position)
+    hs.mouse.setAbsolutePosition(position)
     event.newMouseEvent(event.types.leftMouseDown, position):post()
-    newKeyEvent(spaces.modifiers, key, true):post()
-    event.newMouseEvent(event.types.leftMouseDragged, position):post()
-    newKeyEvent(spaces.modifiers, key, false):post()
-    os.execute("sleep 0.3")
+    asmspc.moveToSpace(key)
     event.newMouseEvent(event.types.leftMouseUp, position):post()
-    hs.mouse.set(position0)
+    hs.mouse.setAbsolutePosition(position0)
   end
+  asmspc.moveToSpace(lastspace)
+  window.focusInterestingWindow()
 end
 
 
