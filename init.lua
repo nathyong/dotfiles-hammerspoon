@@ -61,7 +61,8 @@ end
 
 -- something nice to bring up terminal windows
 hs.hotkey.bind({"alt", "shift"}, "Return", function()
-    local itermApp = hs.appfinder.appFromName("iTerm2")
+    local itermVersion = "iTerm2"  -- the old version is simply iTerm
+    local itermApp = hs.appfinder.appFromName(itermVersion)
     if itermApp == nil then
       hs.application.launchOrFocus("iTerm")
     else
