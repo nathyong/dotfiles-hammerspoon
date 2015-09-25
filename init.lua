@@ -1,3 +1,7 @@
+-- External scripts
+require "cheaphints"
+require "clipboard"
+
 -- Unsupported Spaces extension. Uses private APIs but works okay.
 -- (http://github.com/asmagill/hammerspoon_asm.undocumented)
 local spaces = require("hs._asm.undocumented.spaces")
