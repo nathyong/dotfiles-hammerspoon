@@ -27,7 +27,7 @@ end
 display criteria
 returns : list of window objects ]]
 function window.hintableWindows()
-  windows = hs.window.orderedWindows()
+  local windows = hs.window.orderedWindows()
   return hs.fnutils.filter(windows, hintableWindow)
 end
 
