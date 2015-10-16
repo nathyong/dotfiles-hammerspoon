@@ -20,7 +20,8 @@ end
 params : window (type hs.window)
 returns : bool ]]
 function window.hintableWindow(window)
-  return (window:title() ~= "") and (window:application():title() ~= "")
+  if window:application():title() == "wine" then return true end
+  return (window:title() ~= "") and (window:application():title() ~= "") and (window:isStandard())
 end
 
 --[[ get a list of visible windows that match our
@@ -28,7 +29,7 @@ display criteria
 returns : list of window objects ]]
 function window.hintableWindows()
   local windows = hs.window.orderedWindows()
-  return hs.fnutils.filter(windows, hintableWindow)
+  return hs.fnutils.filter(windows, window.hintableWindow)
 end
 
 function window.focusInterestingWindow()
