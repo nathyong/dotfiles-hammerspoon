@@ -20,7 +20,7 @@ end
 params : window (type hs.window)
 returns : bool ]]
 function window.hintableWindow(window)
-  return (window:title() ~= "") and (window:application():title() ~= "") and (window:isStandard())
+  return (window:title() ~= "") and (window:application():title() ~= "")
 end
 
 --[[ get a list of visible windows that match our
