@@ -27,7 +27,7 @@ hs.hotkey.bind({"alt", "shift"}, "space", function()
 applaunchTable = {s = "Skype",
                   t = "iTerm",
                   f = "Firefox",
-                  t = "Thunderbird",
+                  m = "Thunderbird",
                   k = "KakaoTalk"}
 applaunch = hs.hotkey.modal.new({"alt"}, "w")
 applaunch:bind({}, "escape", function() applaunch:exit() end)
