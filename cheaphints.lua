@@ -9,11 +9,9 @@
 ]]
 
 --[[ configuration parameters ]]
-local showHintMod = {'shift', 'alt'}
-local showHintKey = 'H'
-local hintKeys = {"A", "S", "D", "F", "J", "K", "L", ";", "G", "H", "Q", 
-    "W", "E", "R", "U", "I", "O", "P", "T", "Y", "Z", "X", "C", "V", 
-    "N", "M", ",", ".", "B"}
+local showHintMod = {'alt'}
+local showHintKey = '`'
+local hintKeys = {"1", "2", "3", "4", "5"}
 local hintDuration = 3
 local maxDescriptorLength = 50
 
