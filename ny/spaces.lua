@@ -8,7 +8,6 @@ spaces.modifiers = {ctrl = true}
 
 function spaces.moveToSpace(key)
   asmspc.moveToSpace(key)
-  os.execute("sleep 0.01")
   window.focusInterestingWindow()
 end
 
